@@ -1,4 +1,7 @@
 module.exports = {
+  router: {
+    middleware: 'auth'
+  },
   /*
   ** Headers of the page
   */

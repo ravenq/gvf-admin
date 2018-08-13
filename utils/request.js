@@ -2,6 +2,7 @@ import axios from 'axios'
 import config from '@/config'
 import { Message } from 'element-ui'
 import _ from 'lodash'
+import { getters } from '@/store'
 
 const request = axios.create({
   baseURL: config.BASE_API,
@@ -9,9 +10,9 @@ const request = axios.create({
 })
 
 request.interceptors.request.use(config => {
-  //if (store.getters.token) {
-    //config.headers['X-Session'] = 'aa'
-  //}
+  if (getters.token) {
+    config.headers['session'] = getters.token
+  }
   return config
 }, error => {
   console.log(error)

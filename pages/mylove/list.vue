@@ -53,11 +53,7 @@ export default {
         myloveList: response.data || []
       }
     }).catch(function (error) {
-      Message({
-        message: error,
-        type: 'error',
-        duration: 5 * 1000
-      })
+      Message.error(error)
     })
   },
   methods: {

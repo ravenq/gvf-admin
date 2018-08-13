@@ -7,8 +7,8 @@
     <el-form-item label="Category">
       <el-row>
         <el-select v-model="post.category.id" placeholder="select a category...">
-          <el-option v-for="category in categories" 
-            :key="category.id" 
+          <el-option v-for="category in categories"
+            :key="category.id"
             :label="category.name"
             :value="category.id"></el-option>
         </el-select>
@@ -72,7 +72,7 @@
       </el-date-picker>
     </el-form-item>
     <el-form-item label="Content">
-      <el-input 
+      <el-input
         type="textarea"
         rows="10"
         v-model="post.content">
@@ -87,7 +87,7 @@
     :visible.sync="addCategoryDialogVisible"
     width="40%"
     @open="handleAddCategoryDlgOpened">
-    <el-form :model="addCategory" 
+    <el-form :model="addCategory"
       ref="addCategoryForm"
       label-width="50px">
       <el-form-item
@@ -135,7 +135,7 @@ export default {
       post: {
         author: "ravenq",
         category: {
-          id: 1
+          id: null
         },
         title: "my first post",
         tags: "c",
