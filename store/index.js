@@ -12,6 +12,7 @@ export const mutations = {
   },
   setUser (state, data) {
     state.user = data
+    window.sessionStorage.token = data.token
   }
 }
 
@@ -19,7 +20,7 @@ export const getters = {
   isAuthenticated (state) {
     return !!state.user.token
   },
-  token () {
+  token (state) {
     return state.user.token
   }
 }

@@ -2,16 +2,16 @@ import axios from 'axios'
 import config from '@/config'
 import { Message } from 'element-ui'
 import _ from 'lodash'
-import { getters } from '@/store'
 
 const request = axios.create({
   baseURL: config.BASE_API,
-  timeout: 5000
+  timeout: 5000,
 })
 
 request.interceptors.request.use(config => {
-  if (getters.token) {
-    config.headers['session'] = getters.token
+  let token = window.sessionStorage.token
+  if (token) {
+    config.headers['Session'] = token
   }
   return config
 }, error => {
