@@ -26,10 +26,10 @@
             <el-button class="submit-botton" type="primary" @click="login">sign in</el-button>
           </el-form-item>
         </el-form>
-        <el-row>
+        <!-- <el-row>
            <router-link to="/register"><span class="small-link">Register</span></router-link>
            <router-link to="/reset-password"><span class="small-link float-right">Forget password?</span></router-link>
-        </el-row>
+        </el-row> -->
       </div>
     </el-main>
   </el-container>
@@ -37,7 +37,7 @@
 
 <script>
 import api from "@/api";
-import _ from 'lodash'
+import isEqual from 'lodash'
 import { mapMutations, mapState } from "vuex";
 
 export default {
@@ -65,18 +65,17 @@ export default {
         name: this.user.name,
         password: this.user.password
       }).then(res => {
-        debugger
         let user = res.data
         this.setUser(user);
         this.$router.replace('/dashboard')
       }).catch(res => {
-        if(_.isEqual(res.status, 1)) {
+        if(isEqual(res.status, 1)) {
            this.Message({
             message: "not find user",
             type: "error",
             duration: 5 * 1000
           });
-        } else if(_.isEqual(res.status, 2)) {
+        } else if(isEqual(res.status, 2)) {
           this.Message({
             message: res.message,
             type: "error",

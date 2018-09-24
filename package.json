@@ -1,7 +1,7 @@
 {
-  "name": "gvadmin",
+  "name": "gvf-admin",
   "version": "1.0.0",
-  "description": "admin for gv project.",
+  "description": "The admin of gvf project.",
   "author": "flw_dream@126.com <ravenq>",
   "private": true,
   "scripts": {
@@ -17,8 +17,8 @@
     "element-ui": "^2.4.3",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.10",
-    "nuxt": "^1.0.0",
-    "qiniu-js": "^2.4.0"
+    "markdown-it-vue": "^1.0.5",
+    "nuxt": "^1.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

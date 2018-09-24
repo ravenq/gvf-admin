@@ -19,14 +19,12 @@
 import { mapState } from 'vuex'
 import Sidebar from '~/components/sidebar'
 import Menubar from '~/components/menubar'
-import PostList from '~/components/post-list'
 import 'font-awesome/css/font-awesome.css'
 
 export default {
   components: {
     Sidebar,
-    Menubar,
-    PostList
+    Menubar
   },
   computed: {
     sideWidth() {

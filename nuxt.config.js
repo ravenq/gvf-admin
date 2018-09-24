@@ -6,7 +6,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'gvadmin',
+    title: 'gvf-admin',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -25,7 +25,10 @@ module.exports = {
   */
   plugins: [
     '~/plugins/element-ui',
-    '~/plugins/tools'
+    '~/plugins/tools', {
+      src: '~/plugins/markdown-it-vue',
+      ssr: false
+    }
   ],
   build: {
     vendor: [

@@ -34,7 +34,7 @@
         width="90">
       </el-table-column>
       <el-table-column
-        prop="author"
+        prop="author.name"
         label="author"
         width="90">
       </el-table-column>
@@ -44,7 +44,7 @@
 
 <script>
 import api from '@/api'
-import { Message } from 'element-ui'
+import { message } from 'element-ui'
 
 export default {
   asyncData() {
@@ -53,7 +53,7 @@ export default {
         myloveList: response.data || []
       }
     }).catch(function (error) {
-      Message.error(error)
+      message.error(error)
     })
   },
   methods: {

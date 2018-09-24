@@ -72,11 +72,22 @@
       </el-date-picker>
     </el-form-item>
     <el-form-item label="Content">
-      <el-input
-        type="textarea"
-        rows="10"
-        v-model="post.content">
-      </el-input>
+      <el-row>
+        <el-col :span="12">
+          <el-input
+            type="textarea"
+            :autosize="{ minRows: 10 }"
+            resize="none"
+            v-model="post.content">
+          </el-input>
+        </el-col>
+        <el-col :span="12">
+          <markdown-it-vue
+            class="mk-view"
+            :content="post.content">
+          </markdown-it-vue>
+        </el-col>
+      </el-row>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">Submit</el-button>
@@ -114,6 +125,9 @@
 <script>
 import api from '@/api'
 import _ from 'lodash'
+import isNil from 'lodash'
+import includes from 'lodash'
+import join from 'lodash'
 import { Message } from 'element-ui'
 
 export default {
@@ -130,8 +144,22 @@ export default {
       })
     })
   },
+  beforeRouteEnter(to, from, next) {
+    let id = to.params.id
+    if (!_.isNil(id)) {
+      api.getPost(id).then(res => {
+        if (!_.isNil(res.data)) {
+          next((vm)=>{
+            vm.post = res.data
+            vm.isUpdate = true
+          })
+        }
+      })
+    }
+  },
   data() {
     return {
+      isUpdate: false,
       post: {
         author: "ravenq",
         category: {
@@ -164,7 +192,7 @@ export default {
     },
     handleInputConfirm() {
       let inputTag = this.inputTag;
-      if (inputTag && !_.includes(this.tagArray, inputTag)) {
+      if (inputTag && !includes(this.tagArray, inputTag)) {
         this.tagArray.push(inputTag)
       }
       this.inputTag = ''
@@ -186,20 +214,36 @@ export default {
       }
     },
     onSubmit() {
-      this.post.Tags = _.join(this.tagArray, ',')
-      api.addPost(this.post).then(() => {
-        Message({
-          message: 'Add post success.',
-          type: 'success',
-          duration: 5 * 1000
+      this.post.Tags = join(this.tagArray, ',')
+      if (this.isUpdate) {
+        api.updatePost(this.post).then(() => {
+          Message({
+            message: 'update post success.',
+            type: 'success',
+            duration: 5 * 1000
+          })
+        }).catch((res) =>{
+          Message({
+            message: res.message,
+            type: 'error',
+            duration: 5 * 1000
+          })
         })
-      }).catch((res) =>{
-        Message({
-          message: res.message,
-          type: 'error',
-          duration: 5 * 1000
+      } else {
+        api.addPost(this.post).then(() => {
+          Message({
+            message: 'Add post success.',
+            type: 'success',
+            duration: 5 * 1000
+          })
+        }).catch((res) =>{
+          Message({
+            message: res.message,
+            type: 'error',
+            duration: 5 * 1000
+          })
         })
-      })
+      }
     }
   }
 };
@@ -215,6 +259,9 @@ export default {
 }
 .add-category {
   margin-left: 10px;
+}
+.mk-view {
+  margin-left: 8px;
 }
 </style>
 

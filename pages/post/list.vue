@@ -24,17 +24,17 @@
       <el-table-column
         prop="category.name"
         label="category"
-        width="85">
-      </el-table-column>
-      <el-table-column
-        prop="author"
-        label="author"
         width="90">
       </el-table-column>
       <el-table-column
-        prop="visit"
-        label="vsit"
+        prop="author.name"
+        label="author"
         width="80">
+      </el-table-column>
+      <el-table-column
+        prop="visit"
+        label="visit"
+        width="60">
       </el-table-column>
       <el-table-column
         prop="summary"
@@ -43,16 +43,18 @@
       <el-table-column
         fixed="right"
         label=""
-        width="60">
+        width="90">
         <template slot-scope="scope">
           <el-tooltip content="Editor Post" placement="top">
-            <el-button @click="handleEditor(scope.row)" type="text" size="small">
-              <i class="el-icon-edit"></i>
-            </el-button>
+            <nuxt-link :to="{name:'post-add', params:{id: scope.row.id}}">
+              <el-button type="text" size="small">
+                <i class="el-icon-edit post-item"></i>
+              </el-button>
+            </nuxt-link>
           </el-tooltip>
           <el-tooltip content="Delete Post" placement="top">
             <el-button @click="handleDelete(scope.row)" type="text" size="small">
-              <i class="el-icon-delete"></i>
+              <i class="el-icon-delete post-item"></i>
             </el-button>
           </el-tooltip>
         </template>
@@ -78,9 +80,6 @@ export default {
     })
   },
   methods: {
-    handleEditor(row) {
-      console.log(row);
-    },
     handleDelete(row) {
       console.log(row);
     },
@@ -95,3 +94,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.post-item {
+  font-size: 24px;
+  margin-right: 8px;
+}
+</style>
+

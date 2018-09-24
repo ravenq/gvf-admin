@@ -20,6 +20,19 @@ export default {
       method: 'get'
     })
   },
+  getPost(id) {
+    return request({
+      url: '/post/' + id,
+      method: 'get'
+    })
+  },
+  updatePost(data) {
+    return request({
+      url: '/post/' + data.id,
+      method: 'put',
+      data
+    })
+  },
   addPost(data) {
     return request({
       url: '/post',
