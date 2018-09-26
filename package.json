@@ -28,5 +28,11 @@
     "eslint-plugin-vue": "^4.0.0",
     "node-sass": "^4.9.1",
     "sass-loader": "^7.0.3"
+  },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "9977"
+    }
   }
 }
