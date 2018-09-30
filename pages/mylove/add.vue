@@ -41,9 +41,6 @@ import { mapState } from 'vuex'
 import { Message } from 'element-ui'
 
 export default {
-  mounted() {
-    this.mylove.author = this.user.name
-  },
   computed: {
     ...mapState([
       'user'
@@ -57,7 +54,7 @@ export default {
         token: ''
       },
       mylove: {
-        author: this.user,
+        author: null,
         content: '',
         photo: null,
         sign: ''
@@ -94,6 +91,7 @@ export default {
     onSubmit() {
       this.$refs.form.validate((valid) => {
           if (valid) {
+            this.mylove.author = this.user
             api.addMylove(this.mylove).then(() => {
               Message({
                 message: 'Add mylove success.',
