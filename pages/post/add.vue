@@ -124,10 +124,9 @@
 
 <script>
 import api from '@/api'
-import _ from 'lodash'
-import isNil from 'lodash'
-import includes from 'lodash'
-import join from 'lodash'
+import isNil from 'lodash.isnil'
+import includes from 'lodash.includes'
+import join from 'lodash.join'
 import { Message } from 'element-ui'
 
 export default {
@@ -155,6 +154,10 @@ export default {
           })
         }
       })
+    } else {
+      next((vm)=>{
+        vm.isUpdate = false
+      })
     }
   },
   data() {
@@ -165,11 +168,11 @@ export default {
         category: {
           id: null
         },
-        title: "my first post",
-        tags: "c",
+        title: "",
+        tags: "",
         isTop: false,
-        summary: "my first post summary",
-        content: "my first post summary content",
+        summary: "",
+        content: "",
         status: 0,
         postType: 0,
         refUrl: "",
@@ -191,6 +194,7 @@ export default {
       this.tagArray.splice(this.tagArray.indexOf(tag), 1)
     },
     handleInputConfirm() {
+      debugger
       let inputTag = this.inputTag;
       if (inputTag && !includes(this.tagArray, inputTag)) {
         this.tagArray.push(inputTag)
@@ -201,7 +205,7 @@ export default {
       this.$refs.addCategoryForm.validate((valid) => {
         if (valid) {
           api.addCategory(this.addCategory).then((res) => {
-            this.post.Category.Id = this.addCategory.Id = res.data.Id
+            this.post.category.id = res.data.id
             this.categories.push(this.addCategory)
             this.addCategoryDialogVisible = false
           })

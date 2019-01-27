@@ -2617,6 +2617,11 @@ etag@^1.8.1, etag@~1.8.1:
   version "1.8.1"
   resolved "http://registry.npm.taobao.org/etag/download/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
 
+eve-raphael@0.5.0:
+  version "0.5.0"
+  resolved "http://registry.npm.taobao.org/eve-raphael/download/eve-raphael-0.5.0.tgz#17c754b792beef3fa6684d79cf5a47c63c4cda30"
+  integrity sha1-F8dUt5K+7z+maE15z1pHxjxM2jA=
+
 event-emitter@~0.3.5:
   version "0.3.5"
   resolved "http://registry.npm.taobao.org/event-emitter/download/event-emitter-0.3.5.tgz#df8c69eef1647923c7157b9ce83840610b02cc39"
@@ -2867,6 +2872,13 @@ flat-cache@^1.2.1:
 flatten@^1.0.2:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/flatten/download/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
+
+flowchart.js@^1.11.3:
+  version "1.11.3"
+  resolved "http://registry.npm.taobao.org/flowchart.js/download/flowchart.js-1.11.3.tgz#e27e2c2bb5ed0e78bea403f1370a0ea3dfe274dd"
+  integrity sha1-4n4sK7XtDni+pAPxNwoOo9/idN0=
+  dependencies:
+    raphael "2.2.7"
 
 flush-write-stream@^1.0.0:
   version "1.0.3"
@@ -3928,9 +3940,24 @@ lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "http://registry.npm.taobao.org/lodash.debounce/download/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
 
+lodash.includes@^4.3.0:
+  version "4.3.0"
+  resolved "http://registry.npm.taobao.org/lodash.includes/download/lodash.includes-4.3.0.tgz#60bb98a87cb923c68ca1e51325483314849f553f"
+  integrity sha1-YLuYqHy5I8aMoeUTJUgzFISfVT8=
+
+lodash.isnil@^4.0.0:
+  version "4.0.0"
+  resolved "http://registry.npm.taobao.org/lodash.isnil/download/lodash.isnil-4.0.0.tgz#49e28cd559013458c814c5479d3c663a21bfaa6c"
+  integrity sha1-SeKM1VkBNFjIFMVHnTxmOiG/qmw=
+
 lodash.isplainobject@^4.0.6:
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/lodash.isplainobject/download/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
+
+lodash.join@^4.0.1:
+  version "4.0.1"
+  resolved "http://registry.npm.taobao.org/lodash.join/download/lodash.join-4.0.1.tgz#49aa4a382ff57f550cc7d245a0601c2f8260c886"
+  integrity sha1-SapKOC/1f1UMx9JFoGAcL4JgyIY=
 
 lodash.memoize@^4.1.2:
   version "4.1.2"
@@ -4114,11 +4141,13 @@ markdown-it-toc-and-anchor@^4.1.2:
     clone "^2.1.0"
     uslug "^1.0.4"
 
-markdown-it-vue@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/markdown-it-vue/-/markdown-it-vue-1.0.5.tgz#4ffd2fc09055463043d2af205068961499607541"
+markdown-it-vue@^1.0.6:
+  version "1.0.6"
+  resolved "http://registry.npm.taobao.org/markdown-it-vue/download/markdown-it-vue-1.0.6.tgz#128748519a45fdf5f47d39f52140b4d2dc5541ad"
+  integrity sha1-EodIUZpF/fX0fTn1IUC00txVQa0=
   dependencies:
     echarts "^4.1.0"
+    flowchart.js "^1.11.3"
     github-markdown-css "^2.10.0"
     markdown-it "^8.4.2"
     markdown-it-abbr "^1.0.4"
@@ -5627,10 +5656,6 @@ q@^1.1.2:
   version "1.5.1"
   resolved "http://registry.npm.taobao.org/q/download/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
 
-qiniu-js@^2.4.0:
-  version "2.4.0"
-  resolved "http://registry.npm.taobao.org/qiniu-js/download/qiniu-js-2.4.0.tgz#777c3369e9f915443412bc137bd8c48b7294dde6"
-
 qs@6.5.1:
   version "6.5.1"
   resolved "http://registry.npm.taobao.org/qs/download/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
@@ -5674,6 +5699,13 @@ randomfill@^1.0.3:
 range-parser@^1.0.3, range-parser@~1.2.0:
   version "1.2.0"
   resolved "http://registry.npm.taobao.org/range-parser/download/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
+
+raphael@2.2.7:
+  version "2.2.7"
+  resolved "http://registry.npm.taobao.org/raphael/download/raphael-2.2.7.tgz#231b19141f8d086986d8faceb66f8b562ee2c810"
+  integrity sha1-IxsZFB+NCGmG2PrOtm+LVi7iyBA=
+  dependencies:
+    eve-raphael "0.5.0"
 
 raw-body@2.3.2:
   version "2.3.2"

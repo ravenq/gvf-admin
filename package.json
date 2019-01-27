@@ -16,8 +16,10 @@
     "axios": "^0.18.0",
     "element-ui": "^2.4.3",
     "font-awesome": "^4.7.0",
-    "lodash": "^4.17.10",
-    "markdown-it-vue": "^1.0.5",
+    "lodash.includes": "^4.3.0",
+    "lodash.isnil": "^4.0.0",
+    "lodash.join": "^4.0.1",
+    "markdown-it-vue": "^1.0.6",
     "nuxt": "^1.0.0"
   },
   "devDependencies": {
