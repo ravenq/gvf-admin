@@ -14,9 +14,15 @@ export default {
       data
     })
   },
-  getPostList() {
+  getPostList(offset, limit=10) {
     return request({
-      url: '/post',
+      url: '/post?sortby=pubTime&order=desc&limit='+ limit +'&offset=' + offset,
+      method: 'get'
+    })
+  },
+  getPostCount() {
+    return request({
+      url: '/post/count',
       method: 'get'
     })
   },

@@ -81,7 +81,6 @@ export default {
       })
     },
     handleUploadSuccess(res, file) {
-      console.log(res)
       this.mylove.photo = this.config.UPLOAD_BASE_URL + res.hash;
     },
     handlePictureCardPreview(file) {

@@ -124,6 +124,7 @@
 
 <script>
 import api from '@/api'
+import { mapState } from 'vuex'
 import isNil from 'lodash.isnil'
 import includes from 'lodash.includes'
 import join from 'lodash.join'
@@ -145,9 +146,9 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     let id = to.params.id
-    if (!_.isNil(id)) {
+    if (!isNil(id)) {
       api.getPost(id).then(res => {
-        if (!_.isNil(res.data)) {
+        if (!isNil(res.data)) {
           next((vm)=>{
             vm.post = res.data
             vm.isUpdate = true
@@ -164,7 +165,9 @@ export default {
     return {
       isUpdate: false,
       post: {
-        author: "ravenq",
+        author: {
+          id: null
+        },
         category: {
           id: null
         },
@@ -178,6 +181,7 @@ export default {
         refUrl: "",
         refAuthor: "",
         translator: "",
+        pubTime: new Date()
       },
       categories: [],
       inputTag: '',
@@ -188,6 +192,11 @@ export default {
         desc: ''
       }
     };
+  },
+  computed: {
+    ...mapState([
+      'user'
+    ])
   },
   methods: {
     handleClose(tag) {
@@ -205,6 +214,7 @@ export default {
       this.$refs.addCategoryForm.validate((valid) => {
         if (valid) {
           api.addCategory(this.addCategory).then((res) => {
+            debugger
             this.post.category.id = res.data.id
             this.categories.push(this.addCategory)
             this.addCategoryDialogVisible = false
@@ -218,6 +228,7 @@ export default {
       }
     },
     onSubmit() {
+      this.post.author = this.user
       this.post.Tags = join(this.tagArray, ',')
       if (this.isUpdate) {
         api.updatePost(this.post).then(() => {

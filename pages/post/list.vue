@@ -60,14 +60,25 @@
         </template>
       </el-table-column>
     </el-table>
+    <div class="block">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page.sync="currentPage"
+        :page-size.sync="pageSize"
+        layout="prev, pager, next, jumper"
+        :total="postCount">
+      </el-pagination>
+    </div>
   </div>
 </template>
 
 <script>
 import api from '@/api'
+import { Message } from 'element-ui'
 export default {
   asyncData() {
-    return api.getPostList().then(function (response) {
+    return api.getPostList(0, 1000).then(function (response) {
       return {
         posts: response.data || []
       }
@@ -85,11 +96,29 @@ export default {
     },
     formatter(row, column) {
       return new Date(Date.parse(row.pubTime)).format('yyyy-MM-dd');
+    },
+    handleSizeChange(val) {
+      api.getPostList(0, val).then(response => {
+        this.posts = response.data
+      })
+    },
+    handleCurrentChange(val) {
+      let offset = this.pageSize * (val - 1)
+      api.getPostList(offset, val).then(response => {
+        this.posts = response.data
+      })
     }
+  },
+  mounted() {
+    api.getPostCount().then(response => {
+      this.postCount = response.data
+    })
   },
   data() {
     return {
-      
+      currentPage: 1,
+      postCount: 1,
+      pageSize: 100
     }
   }
 }
