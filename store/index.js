@@ -7,20 +7,20 @@ export const state = () => ({
 })
 
 export const mutations = {
-  toggleSidebar (state) {
+  toggleSidebar(state) {
     state.isCollapseSidebar = !state.isCollapseSidebar
   },
-  setUser (state, data) {
+  setUser(state, data) {
     state.user = data
     window.sessionStorage.token = data.token
   }
 }
 
 export const getters = {
-  isAuthenticated (state) {
+  isAuthenticated(state) {
     return !!state.user.token
   },
-  token (state) {
+  token(state) {
     return state.user.token
   }
 }

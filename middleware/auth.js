@@ -1,12 +1,13 @@
-import _ from 'lodash'
+import indexOf from 'lodash.indexof'
 
-const filters = [
-  '/register',
-  '/reset-password'
-]
+const filters = ['/', '/register', '/reset-password']
 
-export default function ({ store, route, redirect }) {
-  if (_.indexOf(filters, (route.fullPath)) < 0 && !store.getters.isAuthenticated) {
+export default function({ isServer, store, req, route, redirect }) {
+  // If nuxt generate, pass this middleware
+  if (isServer && !req) {
+    return
+  }
+  if (indexOf(filters, route.fullPath) < 0 && !store.getters.isAuthenticated) {
     return redirect('/')
   }
 }

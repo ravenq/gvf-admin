@@ -5,25 +5,37 @@
         <div class="login-title-container">
           <span class="login-title">Login System</span>
         </div>
-        <el-form :model="user" status-icon :rules="rules" ref="form">
+        <el-form ref="form" :model="user" status-icon :rules="rules">
           <el-form-item prop="name">
             <el-input
               v-model="user.name"
-              placeholder="user name or email or phone number">
-              <i slot="prefix" class="prefix-icon fa fa-user" aria-hidden="true"></i>
+              placeholder="user name or email or phone number"
+            >
+              <i
+                slot="prefix"
+                class="prefix-icon fa fa-user"
+                aria-hidden="true"
+              ></i>
             </el-input>
           </el-form-item>
           <el-form-item prop="password">
             <el-input
-              type="password"
               v-model="user.password"
+              type="password"
               auto-complete="off"
-              placeholder="password less then 6 word">
-              <i slot="prefix" class="prefix-icon fa fa-key" aria-hidden="true"></i>
+              placeholder="password less then 6 word"
+            >
+              <i
+                slot="prefix"
+                class="prefix-icon fa fa-key"
+                aria-hidden="true"
+              ></i>
             </el-input>
           </el-form-item>
           <el-form-item>
-            <el-button class="submit-botton" type="primary" @click="login">sign in</el-button>
+            <el-button class="submit-botton" type="primary" @click="login"
+              >sign in</el-button
+            >
           </el-form-item>
         </el-form>
         <!-- <el-row>
@@ -36,60 +48,60 @@
 </template>
 
 <script>
-import api from "@/api";
 import isEqual from 'lodash'
-import { mapMutations, mapState } from "vuex";
+import { mapMutations } from 'vuex'
 
 export default {
-  layout: "empty",
+  layout: 'empty',
   data() {
     return {
       user: {
-        name: "",
-        password: ""
+        name: '',
+        password: ''
       },
       rules: {
-        name: [
-          { required: true, message: "need user name!", trigger: "blur" }
-        ],
+        name: [{ required: true, message: 'need user name!', trigger: 'blur' }],
         password: [
-          { required: true, message: "need password!", trigger: "blur" }
+          { required: true, message: 'need password!', trigger: 'blur' }
         ]
       }
-    };
+    }
   },
   methods: {
-    ...mapMutations(["setUser"]),
+    ...mapMutations(['setUser']),
     login() {
-      api.login({
-        name: this.user.name,
-        password: this.user.password
-      }).then(res => {
-        let user = res.data
-        this.setUser(user);
-        this.$router.replace('/dashboard')
-      }).catch(res => {
-        if(isEqual(res.status, 1)) {
-           this.Message({
-            message: "not find user",
-            type: "error",
-            duration: 5 * 1000
-          });
-        } else if(isEqual(res.status, 2)) {
-          this.Message({
-            message: res.message,
-            type: "error",
-            duration: 5 * 1000
-          });
-        }
-      });
+      this.$api
+        .login({
+          name: this.user.name,
+          password: this.user.password
+        })
+        .then(res => {
+          const user = res.data
+          this.setUser(user)
+          this.$router.replace('/dashboard')
+        })
+        .catch(res => {
+          if (isEqual(res.status, 1)) {
+            this.Message({
+              message: 'not find user',
+              type: 'error',
+              duration: 5 * 1000
+            })
+          } else if (isEqual(res.status, 2)) {
+            this.Message({
+              message: res.message,
+              type: 'error',
+              duration: 5 * 1000
+            })
+          }
+        })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "assets/mixin.scss";
+@import 'assets/mixin.scss';
 .container {
   position: absolute;
   height: 100%;
@@ -129,4 +141,3 @@ export default {
   float: right;
 }
 </style>
-

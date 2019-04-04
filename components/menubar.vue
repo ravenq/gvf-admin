@@ -7,9 +7,7 @@
       <div class="breadcrumb">
         <el-breadcrumb separator="/">
           <el-breadcrumb-item :to="{ path: '/' }">dashboard</el-breadcrumb-item>
-          <el-breadcrumb-item
-            v-for="item in breadcrumbItems"
-            :key="item">
+          <el-breadcrumb-item v-for="item in breadcrumbItems" :key="item">
             {{ item }}
           </el-breadcrumb-item>
         </el-breadcrumb>
@@ -34,24 +32,22 @@ import { mapMutations, mapState } from 'vuex'
 
 export default {
   computed: {
-    ...mapState([
-      'user'
-    ]),
+    ...mapState(['user']),
     breadcrumbItems() {
-      return this.$route.fullPath.split('/').filter((item) => {return !_.isEmpty(item)})
+      return this.$route.fullPath.split('/').filter(item => {
+        return !_.isEmpty(item)
+      })
     }
   },
   methods: {
-    ...mapMutations([
-      'toggleSidebar'
-    ]),
+    ...mapMutations(['toggleSidebar']),
     handleCommand(cmd) {
       debugger
-      switch(cmd) {
+      switch (cmd) {
         case 'profiles':
-        break
+          break
         case 'logout':
-        break
+          break
       }
     }
   }
@@ -59,7 +55,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "assets/mixin.scss";
+@import 'assets/mixin.scss';
 
 .bars {
   text-align: left;
@@ -71,12 +67,10 @@ export default {
 
 .bars-button {
   position: absolute;
-    vertical-align: middle;
-    margin-top: -4px;
+  vertical-align: middle;
+  margin-top: -4px;
   :hover {
     cursor: pointer;
   }
 }
 </style>
-
-

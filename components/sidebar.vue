@@ -6,10 +6,11 @@
     background-color="#545c64"
     text-color="#fff"
     router
-    active-text-color="#ffd04b">
+    active-text-color="#ffd04b"
+  >
     <el-menu-item index="/dashboard">
-        <i class="fa fa-dashboard fa-1x menu-icon"></i>
-        <span slot="title">dashboard</span>
+      <i class="fa fa-dashboard fa-1x menu-icon"></i>
+      <span slot="title">dashboard</span>
     </el-menu-item>
     <el-submenu index="post">
       <template slot="title">
@@ -34,25 +35,20 @@
 import { mapState } from 'vuex'
 
 export default {
-  computed: {
-    ...mapState([
-      'isCollapseSidebar'
-    ])
-  },
   data() {
-    return {
-
-    }
+    return {}
+  },
+  computed: {
+    ...mapState(['isCollapseSidebar'])
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "assets/mixin.scss";
+@import 'assets/mixin.scss';
 .menu-icon {
   font-size: 18px;
   margin-right: 7px;
   margin-left: 4px;
 }
 </style>
-

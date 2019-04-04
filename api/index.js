@@ -1,82 +1,49 @@
-import request from '@/utils/request'
-
-export default {
+export default class {
+  constructor(axios) {
+    this.axios = axios
+  }
   getCategoryList() {
-    return request({
-      url: '/category',
-      method: 'get'
-    })
-  },
+    return this.axios.get('/category')
+  }
   addCategory(data) {
-    return request({
-      url: '/category',
-      method: 'post',
-      data
-    })
-  },
-  getPostList(offset, limit=10) {
-    return request({
-      url: '/post?sortby=pubTime&order=desc&limit='+ limit +'&offset=' + offset,
-      method: 'get'
-    })
-  },
+    return this.axios.post('/category', data)
+  }
+  getPostList(offset, limit = 10) {
+    return this.axios.get(
+      `/post?sortby=pubTime&order=desc&limit=${limit}&offset=${offset}`
+    )
+  }
   getPostCount() {
-    return request({
-      url: '/post/count',
-      method: 'get'
-    })
-  },
+    return this.axios.get('/post/count')
+  }
   getPost(id) {
-    return request({
-      url: '/post/' + id,
-      method: 'get'
-    })
-  },
+    return this.axios.get(`/post/${id}`)
+  }
   updatePost(data) {
-    return request({
-      url: '/post/' + data.id,
-      method: 'put',
-      data
-    })
-  },
+    return this.axios.put(`/post/${data.id}`, data)
+  }
   addPost(data) {
-    return request({
-      url: '/post',
-      method: 'post',
-      data
-    })
-  },
+    return this.axios.post('/post/', data)
+  }
   getMyloveList() {
-    return request({
-      url: '/mylove',
-      method: 'get'
-    })
-  },
+    return this.axios.get('/mylove')
+  }
+  getMylove(id) {
+    return this.axios.get(`/mylove/${id}`)
+  }
   addMylove(data) {
-    return request({
-      url: '/mylove',
-      method: 'post',
-      data
-    })
-  },
+    return this.axios.post('/mylove', data)
+  }
+  updateMylove(data) {
+    return this.axios.post(`/mylove/${data.id}`, data)
+  }
   getUploadToken() {
-    return request({
-      url: '/upload',
-      method: 'get'
-    })
-  },
+    return this.axios.get('/upload')
+  }
   login(data) {
-    return request({
-      url: '/user/login',
-      method: 'post',
-      data
-    })
-  },
+    return this.axios.post('/user/login', data)
+  }
   register(data) {
-    return request({
-      url: '/user',
-      method: 'post',
-      data
-    })
+    return this.axios.post('/user', data)
   }
 }

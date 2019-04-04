@@ -8,12 +8,11 @@
         <menubar></menubar>
       </el-header>
       <el-main>
-         <nuxt/>
+        <nuxt />
       </el-main>
     </el-container>
   </el-container>
 </template>
-
 
 <script>
 import { mapState } from 'vuex'
@@ -26,31 +25,28 @@ export default {
     Sidebar,
     Menubar
   },
+  data() {
+    return {}
+  },
   computed: {
     sideWidth() {
       return this.isCollapseSidebar ? '64px' : '200px'
     },
-    ...mapState([
-      'isCollapseSidebar'
-    ])
-  },
-  data() {
-    return {
-    }
+    ...mapState(['isCollapseSidebar'])
   }
-};
+}
 </script>
 
 <style lang="scss">
-@import "assets/main.css";
+@import 'assets/main.css';
 .layout-container {
   position: absolute;
   height: 100%;
-  width:100%;
+  width: 100%;
 }
 
 .layout-header {
   text-align: right;
-  border-bottom: 1px
+  border-bottom: 1px;
 }
 </style>
