@@ -3,6 +3,10 @@ language: node_js
 node_js:
   - '10'
 
+branchs:
+  only:
+    - master
+
 script:
   - yarn build
 
@@ -16,5 +20,3 @@ addons:
 
 after_success:
   - scp -P29371 -r dist/* root@www.aqcoder.com:/var/www/gvf-admin/
-  on:
-    tags: true

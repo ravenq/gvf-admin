@@ -42,7 +42,6 @@ export default {
   methods: {
     ...mapMutations(['toggleSidebar']),
     handleCommand(cmd) {
-      debugger
       switch (cmd) {
         case 'profiles':
           break

@@ -82,13 +82,13 @@ export default {
         })
         .catch(res => {
           if (isEqual(res.status, 1)) {
-            this.Message({
+            this.$message({
               message: 'not find user',
               type: 'error',
               duration: 5 * 1000
             })
           } else if (isEqual(res.status, 2)) {
-            this.Message({
+            this.$message({
               message: res.message,
               type: 'error',
               duration: 5 * 1000
