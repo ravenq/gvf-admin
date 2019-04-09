@@ -16,4 +16,4 @@ addons:
     - www.aqcoder.com:29371
 
 after_success:
-  - scp -P29371 -r dist/* www.aqcoder.com:/var/www/gvf-admin/
+  - scp -P29371 -r dist/* root@www.aqcoder.com:/var/www/gvf-admin/
