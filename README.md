@@ -1,5 +1,7 @@
 # gvf-admin
 
+[![Build Status](https://travis-ci.org/ravenq/gvf-admin.svg?branch=master)](https://travis-ci.org/ravenq/gvf-admin)
+
 > The admin for the GVF project.
 
 ## dev
