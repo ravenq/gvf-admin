@@ -16,5 +16,5 @@ addons:
 
 deploy:
   provider: script
-  script: scp -P$sshport -r dist/* www.aqcoder.com:/var/www/gvf-admin/
+  script: scp -P29371 -r dist/* www.aqcoder.com:/var/www/gvf-admin/
   skip_cleanup: true
