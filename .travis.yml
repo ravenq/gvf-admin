@@ -18,3 +18,5 @@ deploy:
   provider: script
   script: scp -P$sshport -r dist/* www.aqcoder.com:/var/www/gvf-admin/
   skip_cleanup: true
+  on:
+    tags: true
