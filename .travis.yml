@@ -4,7 +4,8 @@ node_js:
   - '10'
 
 script:
-  - yarn build
+  - mkdir dist
+  - touch dist/test
 
 before_install:
 
