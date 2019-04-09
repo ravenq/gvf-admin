@@ -13,7 +13,7 @@ before_install:
 
 addons:
   ssh_known_hosts:
-    - www.aqcoder.com
+    - www.aqcoder.com:29371
 
 after_success:
   - scp -P29371 -r dist/* www.aqcoder.com:/var/www/gvf-admin/
