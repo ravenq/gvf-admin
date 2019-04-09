@@ -12,11 +12,9 @@ before_install:
 
 addons:
   ssh_known_hosts:
-    - www.aqcoder.com:$sshport
+    - www.aqcoder.com
 
 deploy:
   provider: script
   script: scp -P$sshport -r dist/* www.aqcoder.com:/var/www/gvf-admin/
   skip_cleanup: true
-  on:
-    tags: true
