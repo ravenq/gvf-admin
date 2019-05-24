@@ -38,10 +38,6 @@
             >
           </el-form-item>
         </el-form>
-        <!-- <el-row>
-           <router-link to="/register"><span class="small-link">Register</span></router-link>
-           <router-link to="/reset-password"><span class="small-link float-right">Forget password?</span></router-link>
-        </el-row> -->
       </div>
     </el-main>
   </el-container>

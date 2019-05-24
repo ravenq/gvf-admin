@@ -183,7 +183,7 @@ export default {
     ...mapState(['user'])
   },
   mounted() {
-    this.$api.getCategoryList().then(response => {
+    this.$api.getCategoryList(0, 100).then(response => {
       this.categories = response.data || []
     })
   },
@@ -224,7 +224,7 @@ export default {
       this.$refs.addCategoryForm.validate(valid => {
         if (valid) {
           this.$api.addCategory(this.addCategory).then(res => {
-            this.post.category.id = res.data.id
+            this.post.category = res.data
             this.categories.push(this.addCategory)
             this.addCategoryDialogVisible = false
           })
