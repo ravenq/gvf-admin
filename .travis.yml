@@ -19,4 +19,4 @@ addons:
     - www.aqcoder.com
 
 after_success:
-  - scp -r dist/* root@www.aqcoder.com:/var/www/gvf-admin/
+  - travis_wait 30 scp -r dist/* root@www.aqcoder.com:/var/www/gvf-admin/
